@@ -19,7 +19,10 @@
               "--node-env=development"
             ]
           }
-        }
+        },
+        "dependsOn": [
+          "generate-types"
+        ]
       },
       "prune-lockfile": {
         "dependsOn": [
@@ -85,6 +88,20 @@
           "build",
           "prune"
         ]
+      },
+      "generate-types": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "prisma generate",
+          "cwd": "apps/auth"
+        }
+      },
+      "migrate-prisma": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "prisma migrate dev",
+          "cwd": "apps/auth"
+        }
       }
     }
   },

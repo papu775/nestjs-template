@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: auth-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 1335
+      MYSQL_DATABASE: auth
+    ports:
+      - "3306:3306"
+    volumes:
+      - auth_mysql_data:/var/lib/mysql
+    networks:
+      - auth_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: auth-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: 1335
+    depends_on:
+      - mysql
+    networks:
+      - auth_network
+
+volumes:
+  auth_mysql_data:
+
+networks:
+  auth_network:
+    driver: bridge
