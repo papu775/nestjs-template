@@ -14,7 +14,6 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "6910a69a776d073cf29dbe8f",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
@@ -80,5 +79,14 @@
     "test": {
       "dependsOn": ["^build"]
     }
+  },
+  "s3": {
+    "endpoint": "http://localhost:4566",
+    "region": "us-east-1",
+    "bucket": "nx-s3-cache-nestjs-template",
+    "accessKeyId": "AKIAFAKEEXAMPLE12345",
+    "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+    "forcePathStyle": true,
+    "localMode": "read-write"
   }
 }
