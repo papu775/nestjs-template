@@ -28,7 +28,8 @@
           "buildDepsName": "build-deps",
           "watchDepsName": "watch-deps"
         }
-      }
+      },
+      "exclude": ["packages/nestjs/*"]
     },
     {
       "plugin": "@nx/webpack/plugin",
@@ -62,6 +63,15 @@
         },
         "runTarget": {
           "name": "docker:run"
+        }
+      }
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "include": ["packages/nestjs/*"],
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
         }
       }
     }

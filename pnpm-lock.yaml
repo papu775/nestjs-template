@@ -160,6 +160,8 @@ importers:
 
   apps/auth-e2e: {}
 
+  packages/nestjs: {}
+
 packages:
 
   '@angular-devkit/core@19.2.17':
